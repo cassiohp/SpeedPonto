@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+nav{height: 90px;}
+
+a{cursor: pointer; font-weight: bold; color: #ffffff !important;}
+
+.neo-section{
+    min-height: 820px;
+    background-size: cover !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+}
+
+.neo-container{
+    max-width: 1280px;
+    padding: 2% 2%;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+.neo-section > .neo-container{
+    position: relative;
+    z-index: 105;
+}
+
+.wm{width: 50%; float: left;}
+
+.clear{clear: both;}
+
+.center{text-align: center;}
+
+.texto-centro{
+    font-size: 2.8em;
+    font-family: 'Ubuntu';
+    font-weight: bold;
+}
+
+.btnInicio{width: 220px; border-radius: 15px !important;}
+
+.botoes{padding: 5% 10%;}
+
+.rodape{
+    color: white;
+    background-color: black;
+    height: 29px;
+    text-align: center;
+    padding: 5px;
+}
+
+.icone{
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+    color: white;
+}
+
+.container{
+    margin-top:150px;
+    margin-bottom:226px;
+}
+
+.row{
+    margin-top: 8px;
+}
+
+.botoesCadastrar  button, a{
+    border-radius: 15px !important;
+}
+
+/*Responsividade*/
+
+@media screen and (max-width: 1100px) {
+
+    .wm{width: 100%;}
+    nav{height: 100%;}
+    .botoesCadastrar > button{
+       width: 100%;
+
+    }
+    
+    .botoesCadastrar > a{
+        width: 100%;
+    }
+    
+}

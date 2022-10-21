@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+    <title>SpeedPonto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Opens+Sans:ital,wght@0,400;1,600&family=Ubuntu&Family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
+    <meta name="author" content="Cassio H. P.">
+</head>
+<body>
+
+    <div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+
+    <section class="neo-section" style="background-image: url('img/bg-index.jpg')">
+        <div class="center neo-container">
+            <h1 class="texto-centro">Sistema de Gerenciamento de Ponto</h1>
+        <div class="botoes">
+            <div class="wm">
+                <h5 class="btn btnInicio btn-success">Resgistro de Ponto</h5>
+            </div>
+
+            <div class="wm">
+                <h5 class="btn btnInicio btn-primary">Ajuste de Ponto</h5>
+            </div>
+            <div class="clear"></div>
+        </div>
+        </div>
+    </section>
+
+    <div th:replace="fragmentos/fragmentos :: rodape"></div>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

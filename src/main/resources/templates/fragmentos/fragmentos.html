@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+    <title>SpeedPonto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Opens+Sans:ital,wght@0,400;1,600&family=Ubuntu&Family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
+    <meta name="author" content="Cassio H. P.">
+</head>
+<body>
+    <!--Cabeçalho-->
+    <header th:fragment="cabecalho">
+
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000">
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/img/SpeedPontoIcon.png" width="150px" height="150px"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navMobile" class="navbar-collapse collapse justify-content-end">
+                <a class="nav-item nav-link" th:href="@{/}"><i><img src="/img/home.png" class="icone"></i>Início</a>
+                <a class="nav-item nav-link"><i><img src="/img/relogio.png" class="icone"></i>Registrar Ponto</a>
+                <a class="nav-item nav-link"><i><img src="/img/edit.png" class="icone"></i>Ajustar Ponto</a>
+                <a class="nav-item nav-link" th:href="@{inserir-funcionario}"><i><img src="/img/relatorio.png" class="icone"></i>Cadastrar</a>
+                <a class="nav-item nav-link"><i><img src="/img/config.png" class="icone"></i>Gerenciar</a>
+                <a class="nav-item nav-link btn-danger"><i><img src="/img/sair.png" class="icone"></i>Sair</a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!--Rodapé-->
+    <footer class="rodape" th:fragment="rodape">
+        <span>Todos diretos Reservados - 2022 &copy; Cássio Henrique</span>
+    </footer>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

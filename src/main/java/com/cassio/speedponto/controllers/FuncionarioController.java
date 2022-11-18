@@ -16,7 +16,7 @@ import javax.validation.Valid;
 public class FuncionarioController {
 
     @Autowired
-    private FuncionarioDao funcionariorepositorio;
+    private FuncionarioDao funcionarioRepositorio;
 
     @GetMapping("/inserir-funcionario")
     public ModelAndView FormFuncionario(Funcionario funcionario){
@@ -31,12 +31,12 @@ public class FuncionarioController {
     @PostMapping("InsertFuncionario")
     public ModelAndView InserirFuncionario(@Valid Funcionario funcionario, BindingResult br){
         ModelAndView mv = new ModelAndView();
-        if(br.hasErrors() == true){
+        if(br.hasErrors()){
             mv.setViewName("funcionario/formFuncionario");
             mv.addObject("funcionario");
         }else{
             mv.setViewName("redirect:/lista-funcionarios");
-            //funcionariorepositorio.save(funcionario);
+            funcionarioRepositorio.save(funcionario);
         }
         return mv;
     }
@@ -45,7 +45,7 @@ public class FuncionarioController {
     public ModelAndView ListagemFuncionarios(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("funcionario/listFuncionarios");
-        mv.addObject("funcionariosList", funcionariorepositorio.findAll());
+        mv.addObject("funcionariosList", funcionarioRepositorio.findAll());
         return mv;
     }
 
@@ -54,7 +54,7 @@ public class FuncionarioController {
 
         ModelAndView mv = new ModelAndView();
         mv.setViewName("funcionario/alterar");
-        Funcionario funcionario = funcionariorepositorio.getOne(id);
+        Funcionario funcionario = funcionarioRepositorio.getOne(id);
         mv.addObject("funcionario", funcionario);
         return mv;
 
@@ -64,13 +64,13 @@ public class FuncionarioController {
     public ModelAndView alterar(Funcionario funcionario){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:/lista-funcionarios");
-        funcionariorepositorio.save(funcionario);
+        funcionarioRepositorio.save(funcionario);
         return mv;
     }
 
     @GetMapping("/excluir/{id}")
     public String excluirFuncionario(@PathVariable("id") Integer id){
-        funcionariorepositorio.deleteById(id);
+        funcionarioRepositorio.deleteById(id);
         return "redirect:/lista-funcionarios";
     }
 
@@ -90,5 +90,13 @@ public class FuncionarioController {
         mv.setViewName("login/cadastro");
         return mv;
     }
+
+    @PostMapping("salvarFuncionario")
+    public ModelAndView cadastrar(Funcionario funcionario){
+        ModelAndView mv = new ModelAndView();
+        funcionarioRepositorio.save(funcionario);
+        mv.setViewName("redirect:/");
+        return mv;
+}
 
 }

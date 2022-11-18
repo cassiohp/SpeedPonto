@@ -24,20 +24,20 @@
                     <p>Crie seu usuário no sistema.</p>
                 </div>
 
-                <form method="post" action="/InsertFuncionario" th:object="${funcionario}">
+                <form method="post" th:object="${funcionario}" action="salvarFuncionario">
                     
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nome">
+                        <input type="text" class="form-control" th:field="*{nome}" placeholder="Nome">
                     </div>
 
                     
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="CPF">
+                        <input type="text" class="form-control" th:field="*{cpf}" placeholder="CPF">
                     </div>
 
 
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Cargo">
+                        <input type="text" class="form-control" th:field="*{cargo}" placeholder="Cargo">
                     </div>
 
                     <div class="form-group">
@@ -48,12 +48,12 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Insira sua senha">
+                        <input type="password" class="form-control" th:field="*{senha}" placeholder="Insira sua senha">
                     </div>
 
 
                     <button type="submit" class="btn btn-success">Cadastrar</button>
-                    <button type="button" class="btn btn-danger" href="/">Voltar</button>
+                    <a class="btn btn-danger" href="/" style="padding-top: 5px;">Voltar</a>
 
 
                 </form>

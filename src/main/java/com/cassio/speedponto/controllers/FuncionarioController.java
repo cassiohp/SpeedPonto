@@ -2,6 +2,7 @@ package com.cassio.speedponto.controllers;
 
 import com.cassio.speedponto.dao.FuncionarioDao;
 import com.cassio.speedponto.model.Funcionario;
+import com.cassio.speedponto.service.ServiceFuncionario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,8 @@ public class FuncionarioController {
 
     @Autowired
     private FuncionarioDao funcionarioRepositorio;
+    @Autowired
+    private ServiceFuncionario serviceFuncionario;
 
     @GetMapping("/inserir-funcionario")
     public ModelAndView FormFuncionario(Funcionario funcionario){
@@ -92,9 +95,9 @@ public class FuncionarioController {
     }
 
     @PostMapping("salvarFuncionario")
-    public ModelAndView cadastrar(Funcionario funcionario){
+    public ModelAndView cadastrar(Funcionario funcionario) throws Exception {
         ModelAndView mv = new ModelAndView();
-        funcionarioRepositorio.save(funcionario);
+        serviceFuncionario.salvarFuncionario(funcionario);
         mv.setViewName("redirect:/");
         return mv;
 }

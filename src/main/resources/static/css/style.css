@@ -80,6 +80,15 @@ a{cursor: pointer; font-weight: bold; color: #ffffff !important;}
     font-size: 40px;
 }
 
+#cam{
+    margin-left: 200px
+}
+canvas{
+    position: absolute;
+    margin-left: -720px;
+    margin-top: 9px;
+}
+
 /*Responsividade*/
 
 @media screen and (max-width: 1100px) {

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+    <title>Listagem de Funcionários - SpeedPonto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Opens+Sans:ital,wght@0,400;1,600&family=Ubuntu&Family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
+    <meta name="author" content="Cassio H. P.">
+</head>
+<body>
+
+    <div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+
+    <div class="container">
+        <h4>Folha de Ponto</h4>
+        <hr>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <th scope="col">Data</th>
+                <th scope="col">Entrada</th>
+                <th scope="col">Saída para Almoço</th>
+                <th scope="col">Volta do Almoço</th>
+                <th scope="col">Saída</th>
+                <th scope="col">Ação</th>
+            </thead>
+
+            <tbody>
+                <tr scope="row" th:each="funcionarios : ${funcionariosList}">
+                    <td th:text="${funcionarios.nome}"></td>
+                    <td th:text="${funcionarios.cpf}"></td>
+                    <td th:text="${funcionarios.cargo}"></td>
+                    <td th:text="${funcionarios.acesso}"></td>
+                    <td th:text="${funcionarios.acesso}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{alterar/{id}(id=${funcionarios.id})}"> <img src="img/edit.png" class="icone">Editar</a>
+                        <a class="btn btn-danger" th:href="@{excluir/{id}(id=${funcionarios.id})}"> <img src="img/sair.png" class="icone">Excluir</a>
+                    </td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div th:replace="fragmentos/fragmentos :: rodape"></div>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

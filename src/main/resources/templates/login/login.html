@@ -24,13 +24,18 @@
                     <p>Inisira suas credenciais para acessar o sistema.</p>
                 </div>
 
-                <form method="post">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="CPF">
+                <form method="post" th:object="${funcionario}" action="/login"> 
+
+                    <div class="alert alert-danger" role="alert" th:if="${msg}">
+                        <strong th:text="${msg}"></strong>
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" placeholder="Insira sua senha">
+                        <input type="text" class="form-control" th:field="*{cpf}" placeholder="CPF">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" th:field="*{senha}" placeholder="Insira sua senha">
                     </div>
 
                     <div class="cadastro">

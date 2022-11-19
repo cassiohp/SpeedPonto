@@ -1,8 +1,11 @@
 package com.cassio.speedponto.controllers;
 
 import com.cassio.speedponto.dao.FuncionarioDao;
+import com.cassio.speedponto.exceptions.ServiceFuncionarioException;
 import com.cassio.speedponto.model.Funcionario;
 import com.cassio.speedponto.service.ServiceFuncionario;
+import com.cassio.speedponto.util.Util;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.NoSuchAlgorithmException;
 
 @Controller
 public class FuncionarioController {
@@ -83,6 +88,15 @@ public class FuncionarioController {
     public ModelAndView login(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("login/login");
+        mv.addObject("funcionario", new Funcionario());
+        return mv;
+    }
+
+    @GetMapping("/index")
+    public ModelAndView index(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("home/index");
+        mv.addObject("funcionario", new Funcionario());
         return mv;
     }
 
@@ -94,12 +108,48 @@ public class FuncionarioController {
         return mv;
     }
 
+    @GetMapping("/folha-ponto")
+    public ModelAndView folhaPonto(){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("funcionario", new Funcionario());
+        mv.setViewName("funcionario/folhaPonto");
+        mv.addObject("funcionariosList", funcionarioRepositorio.findAll());
+        return mv;
+    }
+
+    @GetMapping("/cadastrar-ponto")
+    public ModelAndView cadastrarPonto(){
+        ModelAndView mv = new ModelAndView();
+        //mv.addObject("funcionario", new Funcionario());
+        mv.setViewName("funcionario/registrarPonto");
+        return mv;
+    }
+
     @PostMapping("salvarFuncionario")
     public ModelAndView cadastrar(Funcionario funcionario) throws Exception {
         ModelAndView mv = new ModelAndView();
         serviceFuncionario.salvarFuncionario(funcionario);
         mv.setViewName("redirect:/");
         return mv;
-}
+    }
+
+    @PostMapping("/login")
+    public ModelAndView login(@Valid Funcionario funcionario, @NotNull BindingResult br, HttpSession session) throws NoSuchAlgorithmException, ServiceFuncionarioException {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("funcionario", new Funcionario());
+        if(br.hasErrors()){
+            mv.setViewName("login/login");
+        }
+
+        Funcionario funcionarioLogin = serviceFuncionario.loginFuncionario(funcionario.getCpf(), Util.md5(funcionario.getSenha()));
+        if(funcionarioLogin == null){
+            mv.addObject("msg", "Funcionario não encontrado. Tente novamente");
+            mv.setViewName("login/login");
+        }else {
+            session.setAttribute("funcionarioLogado", funcionarioLogin);
+            return index();
+        }
+        return mv;
+    }
 
 }

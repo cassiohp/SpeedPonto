@@ -2,6 +2,7 @@ package com.cassio.speedponto.service;
 import com.cassio.speedponto.dao.FuncionarioDao;
 import com.cassio.speedponto.exceptions.CpfExistsException;
 import com.cassio.speedponto.exceptions.CriptoExistsException;
+import com.cassio.speedponto.exceptions.ServiceFuncionarioException;
 import com.cassio.speedponto.model.Funcionario;
 import com.cassio.speedponto.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,13 @@ public class ServiceFuncionario {
         }
 
         repositorioFuncionario.save(funcionario);
+
+    }
+
+    public Funcionario loginFuncionario(String cpf, String senha) throws ServiceFuncionarioException {
+
+        Funcionario funcionarioLogin = repositorioFuncionario.buscarLogin(cpf, senha);
+        return funcionarioLogin;
 
     }
 

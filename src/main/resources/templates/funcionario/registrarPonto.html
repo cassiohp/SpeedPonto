@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+    <title>Registro de Ponto - SpeedPonto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Opens+Sans:ital,wght@0,400;1,600&family=Ubuntu&Family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
+    <script type="text/javascript" src="/js/relogio.js"></script>
+    <meta name="author" content="Cassio H. P.">
+</head>
+<body>
+
+    <div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+
+    <div class="container">
+        <h4>Registro de Ponto</h4>
+
+        <form method="post" action="/InsertFuncionario" th:object="${funcionario}" autocomplete="off">
+            <hr>
+            <div class="relogio">
+                <span id="horas">00</span>
+                <span>:</span>
+                <span id="minutos">00</span>
+                <span>:</span>
+                <span id="segundos">00</span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-goup offset-md-3">
+                    <label>Horário:</label>
+                    <select class="form-control">
+                        <option value="1H">Entrada</option>
+                        <option value="2H">Saida para Almoço</option>
+                        <option value="3H">Volta do Almoço</option>
+                        <option value="4H">Fim do Expediente</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 form-goup offset-md-3">
+                    <label>Nome do Funcionário:</label>
+                    <input class="form-control">
+                </div>
+            </div>
+
+            <div class="row botoesCadastrar">
+                <button type="submit" class="btn btn-success offset-md-5">Salvar</button>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <a class="btn btn-danger">Voltar</a>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div th:replace="fragmentos/fragmentos :: rodape"></div>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

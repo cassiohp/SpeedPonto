@@ -23,12 +23,17 @@
 
         <form method="post" action="/InsertFuncionario" th:object="${funcionario}" autocomplete="off">
             <hr>
+            <div class="face">
+                <video autoplay id="cam" width="720" height="560" muted></video>
+            </div>
             <div class="relogio">
+                <span>
                 <span id="horas">00</span>
                 <span>:</span>
                 <span id="minutos">00</span>
                 <span>:</span>
                 <span id="segundos">00</span>
+                </span>
             </div>
             <div class="row">
                 <div class="col-md-6 form-goup offset-md-3">
@@ -60,7 +65,7 @@
     </div>
 
     <div th:replace="fragmentos/fragmentos :: rodape"></div>
-
+    <script src="/js/reconhecimento.js"></script>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
